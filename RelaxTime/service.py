@@ -3,7 +3,7 @@
 import thread
 from http_client import HttpClient
 
-def niceview_svr(num):
+def niceview_svr(num=10):
     '''
         同步实现 图片获取
     :param num: 图片数量
@@ -27,4 +27,4 @@ def niceview_svr(num):
 
 # test demo
 if __name__ == '__main__':
-    print niceview_svr(1)
+    print niceview_svr()
