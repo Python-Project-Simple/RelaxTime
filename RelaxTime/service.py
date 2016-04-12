@@ -3,9 +3,10 @@
 import thread
 from http_client import HttpClient
 
-def niceview_svr():
+def niceview_svr(num):
     '''
-    同步实现 图片获取
+        同步实现 图片获取
+    :param num: 图片数量
     :return: 状态码和图片信息,
     '''
     header = {
@@ -13,7 +14,7 @@ def niceview_svr():
         "Content-Type": "application/json"
     }
     host = 'apis.baidu.com'
-    url = '/txapi/mvtp/meinv?num=1'
+    url = '/txapi/mvtp/meinv?num=%d' % num
     http_cli = HttpClient(host, 80, 30)
     http_res = http_cli.send_request(url, 'GET', header=header)
 
@@ -21,10 +22,9 @@ def niceview_svr():
     ret["status"] = http_res["status"]
     if ret["status"] != 200:
         return ret
-    ret["picUrl"] = http_res["body"]["newslist"][0]["picUrl"]
-    ret["title"] = http_res["body"]["newslist"][0]["title"]
+    ret["picList"] = http_res["body"]["newslist"]
     return ret
 
 # test demo
 if __name__ == '__main__':
-    print niceview_svr()
+    print niceview_svr(1)
