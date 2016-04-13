@@ -17,9 +17,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+<<<<<<< HEAD
 from views import PictureView
 
 admin.autodiscover()
+=======
+from views import TestView
+>>>>>>> e5e1a6d921d964986b6bd4b49b687f9b83e7c002
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+        <!-- Main Wrapper -->
+<div id="wrapper">
+
+    <div class="content">
+
+        <div class="row">
+            {% if pic_name %}the piture is
+                <img src="{{ pic_name }}">
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% include 'footer.html' %}
+{% include 'foot.html' %}
