@@ -9,5 +9,5 @@ class PictureView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TemplateView, self).get_context_data(**kwargs)
         res = niceview_svr()
-        context['pic_name'] = res['picUrl']
+        context['pic_name'] = res['picList']
         return context
