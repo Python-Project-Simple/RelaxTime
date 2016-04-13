@@ -2,17 +2,43 @@
 {% block content %}
         <!-- Main Wrapper -->
 <div id="wrapper">
-
     <div class="content">
-
         <div class="row">
-            {% if pic_name %}the piture is
-                <img src="{{ pic_name }}">
-            {% endif %}
+            <div class="text-center">
+                <button id="next_view" class="btn btn-success btn-sm">下一批</button>
+            </div>
+{#            {% if pic_name %}the piture is#}
+{#                <img src="{{ pic_name }}">#}
+{#            {% endif %}#}
+{#            {{ pic_name }}#}
+            {% for item in pic_name %}
+                <img src={{ item.picUrl }}>
+            {% endfor %}
         </div>
     </div>
 </div>
 {% endblock %}
+
+<script>
+
+    $("#next_view").click(function showPicture(){
+        var url = "localhost:8000/picview";
+        $.get(url,function(data){
+            console.log(data);
+            var addelement = document.getElementById("next_view");
+            addelement.options.length = 0;
+            $.each(data,function(i,item){
+                if(item == null){
+                    return ;
+                }
+                console.log(item);
+                addelement.options.add(new Option(item,item));
+            });
+        });
+    })
+
+</script>
+
 
 {% include 'footer.html' %}
 {% include 'foot.html' %}
