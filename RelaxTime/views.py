@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
+from django.views.generic import View,TemplateView
+from service import niceview_svr
 
-from django.http import HttpResponse
+class PictureView(TemplateView):
 
-def index(request):
-    return HttpResponse(u"test url")
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        res = niceview_svr()
+        context['pic_name'] = res['picUrl']
+        return context

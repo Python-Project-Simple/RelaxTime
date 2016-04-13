@@ -17,10 +17,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from views import PictureView
+
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$','RelaxTime.views.index'),
+    url(r'^picview$',PictureView.as_view(),name = 'picture'),
     # url(r'^niceview', )
 ]
