@@ -17,12 +17,11 @@
         </div>
     </div>
 </div>
-{% endblock %}
 
 <script>
-
-    $("#next_view").click(function showPicture(){
+    $("#next_view").click(function(){
         var url = "localhost:8000/picview";
+        console.log(url);
         $.get(url,function(data){
             console.log(data);
             var addelement = document.getElementById("next_view");
@@ -36,9 +35,9 @@
             });
         });
     })
-
 </script>
 
+{% endblock %}
 
-{% include 'footer.html' %}
+
 {% include 'foot.html' %}
