@@ -7,20 +7,23 @@
             <div class="text-center">
                 <button id="next_view" class="btn btn-success btn-sm">下一批</button>
             </div>
-{#            {% if pic_name %}the piture is#}
-{#                <img src="{{ pic_name }}">#}
-{#            {% endif %}#}
-{#            {{ pic_name }}#}
-            {% for item in pic_name %}
-                <img src={{ item.picUrl }}>
-            {% endfor %}
+            <section id="gallery">
+                <div class="container-fluid">
+                    <div class="row">
+                        {% for item in pic_name %}
+                            <a href="{{ item.picUrl }}" data-toggle="lightbox" data-gallery="sigma-gallery" data-title="{{ item.title }}">
+                            <img src="{{ item.picUrl }}" alt="Image 1" class="img-fluid sigmapad col-lg-4 col-md-6 col-sm-6"></a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </div>
 
 <script>
     $("#next_view").click(function(){
-        var url = "localhost:8000/picview";
+        var url = "http://localhost:8000/picview";
         console.log(url);
         $.get(url,function(data){
             console.log(data);
@@ -39,5 +42,5 @@
 
 {% endblock %}
 
-
+{% include 'footer.html' %}
 {% include 'foot.html' %}
