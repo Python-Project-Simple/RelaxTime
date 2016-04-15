@@ -19,6 +19,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from views import PictureView
+import rest_views
 
 admin.autodiscover()
 
@@ -26,5 +27,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$','RelaxTime.views.index'),
     url(r'^picview$',PictureView.as_view(),name = 'picture'),
+    url(r'^rest/getPictures', rest_views.get_picture),
     # url(r'^niceview', )
 ]
